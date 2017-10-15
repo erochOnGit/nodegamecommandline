@@ -22,7 +22,7 @@ class Kingdom {
   }
 
   getZones() {
-        return this.zones;
+        return this.zones.name;
   }
 }
 export default Kingdom;

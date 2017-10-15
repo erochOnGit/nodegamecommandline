@@ -10,9 +10,9 @@ class Map {
     let village1;
     let village2;
     let village3;
-    this.villages.push((village1 = new Village()));
-    this.villages.push((village2 = new Village()));
-    this.villages.push((village3 = new Village()));
+    this.villages.push((village1 = new Village("name")));
+    this.villages.push((village2 = new Village("name")));
+    this.villages.push((village3 = new Village("name")));
     let champ1 = new RessourseZone("&#9638");
     let champ2 = new RessourseZone("&#9638");
     let champ3 = new RessourseZone("&#9638");
