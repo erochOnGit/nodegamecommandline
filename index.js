@@ -16,7 +16,7 @@ app.get("/", function(req, res) {
 io.on("connection", function(socket) {
   KingdomsUsersId++;
 
-  let kingdom = new Kingdom(socket, KingdomsUsersId, KingdomsUsersId, {
+  let kingdom = new Kingdom(socket, map, KingdomsUsersId, KingdomsUsersId, {
     food: 10,
     wood: 10,
     stone: 5,
@@ -29,7 +29,9 @@ io.on("connection", function(socket) {
     } else if (msg == "getMyUserId") {
       socket.emit("console message", kingdom.getUserId());
     } else if (msg == "getMyRessources") {
-      socket.emit("console message", JSON.stringify(kingdom.getRessources()));
+        socket.emit("console message", JSON.stringify(kingdom.getRessources()));
+    } else if (msg == "getMyZones") {
+      socket.emit("console message", JSON.stringify(kingdom.getZones()));
     } else {
       console.log("message: " + msg);
       socket.emit("console message", msg);

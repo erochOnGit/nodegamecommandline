@@ -1,15 +1,18 @@
 /**
  * Created by emile on 30/09/2017.
  */
-
 import Village from "./village";
 import RessourseZone from "./ressourceZone";
 class Map {
   constructor() {
     console.log("user connected map generation started");
-    let village1 = new Village();
-    let village2 = new Village();
-    let village3 = new Village();
+    this.villages = [];
+    let village1;
+    let village2;
+    let village3;
+    this.villages.push((village1 = new Village()));
+    this.villages.push((village2 = new Village()));
+    this.villages.push((village3 = new Village()));
     let champ1 = new RessourseZone("&#9638");
     let champ2 = new RessourseZone("&#9638");
     let champ3 = new RessourseZone("&#9638");
@@ -61,6 +64,14 @@ class Map {
     }
     mapDom = mapDom + "</div>";
     return mapDom;
+  }
+
+  getStartingVillage(startingZone) {
+    if (this.villages.length > startingZone) {
+      return this.villages[startingZone];
+    } else {
+      return "sorry there is no other place on this server try on another";
+    }
   }
 }
 export default Map;
