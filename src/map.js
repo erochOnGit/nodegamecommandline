@@ -2,13 +2,11 @@
  * Created by emile on 30/09/2017.
  */
 
-import Kingdom from "./kingdom.js";
 import Village from "./village";
 import RessourseZone from "./ressourceZone";
 class Map {
-  constructor(socket) {
+  constructor() {
     console.log("user connected map generation started");
-    socket.emit("console message", "User connected <br>Map generation started");
     let village1 = new Village();
     let village2 = new Village();
     let village3 = new Village();
@@ -25,7 +23,7 @@ class Map {
     let lac3 = new RessourseZone("&#9634");
     let betail1 = new RessourseZone("&#9635");
     let betail2 = new RessourseZone("&#9635");
-    let kingdom = new Kingdom();
+
     this.heigth = 4;
     this.width = 4;
     this.length = 15;
