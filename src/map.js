@@ -14,16 +14,24 @@ class Map {
         let champ2 = new RessourseZone();
         let champ3 = new RessourseZone();
         let champ4 = new RessourseZone();
-        let montagne1 = new RessourseZone();
+        let champ5 = new RessourseZone();
+        let montagne1 = new RessourseZone("&#x39B");
+        let montagne2 = new RessourseZone("&#x39B");
+        let montagne3 = new RessourseZone("&#x39B");
         let lac1 = new RessourseZone();
-        this.heigth = 3;
-        this.width = 3;
-        this.length = 8;
+        let lac2 = new RessourseZone();
+        let lac3 = new RessourseZone();
+        let betail1 = new RessourseZone();
+        let betail2 = new RessourseZone();
+        this.heigth = 4;
+        this.width = 4;
+        this.length = 15;
 
         this.json={
-            0:village1,1:champ1,2:montagne1,
-            3:champ2,4:champ3,5:lac1,
-            6:village3,7:champ4,8:village2}
+            0:montagne1,1:village1,2:champ1,3:lac1,
+            4:betail1,5:champ2, 6:champ3,7:betail2,
+            8:village2,9:lac2,10:montagne2,11:village3,
+            12:champ4,13:montagne3,14:lac3,15:champ5}
     }
 
     getMap(){
