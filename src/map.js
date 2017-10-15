@@ -1,6 +1,8 @@
 /**
  * Created by emile on 30/09/2017.
  */
+
+import Kingdom from "./kingdom.js";
 import Village from "./village";
 import RessourseZone from "./ressourceZone";
 class Map {
@@ -10,19 +12,20 @@ class Map {
     let village1 = new Village();
     let village2 = new Village();
     let village3 = new Village();
-    let champ1 = new RessourseZone();
-    let champ2 = new RessourseZone();
-    let champ3 = new RessourseZone();
-    let champ4 = new RessourseZone();
-    let champ5 = new RessourseZone();
-    let montagne1 = new RessourseZone("&#x39B");
-    let montagne2 = new RessourseZone("&#x39B");
-    let montagne3 = new RessourseZone("&#x39B");
-    let lac1 = new RessourseZone();
-    let lac2 = new RessourseZone();
-    let lac3 = new RessourseZone();
-    let betail1 = new RessourseZone();
-    let betail2 = new RessourseZone();
+    let champ1 = new RessourseZone("&#9638");
+    let champ2 = new RessourseZone("&#9638");
+    let champ3 = new RessourseZone("&#9638");
+    let champ4 = new RessourseZone("&#9638");
+    let champ5 = new RessourseZone("&#9638");
+    let montagne1 = new RessourseZone("&#9641");
+    let montagne2 = new RessourseZone("&#9641");
+    let montagne3 = new RessourseZone("&#9641");
+    let lac1 = new RessourseZone("&#9634");
+    let lac2 = new RessourseZone("&#9634");
+    let lac3 = new RessourseZone("&#9634");
+    let betail1 = new RessourseZone("&#9635");
+    let betail2 = new RessourseZone("&#9635");
+    let kingdom = new Kingdom();
     this.heigth = 4;
     this.width = 4;
     this.length = 15;

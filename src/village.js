@@ -3,7 +3,7 @@
  */
 class Village {
   constructor(owner) {
-    this.character = "&#8719";
+    this.character = "&#9712";
     this.owner = owner;
     this.citizen = 0;
     this.mairie;
