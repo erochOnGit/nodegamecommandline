@@ -28,6 +28,8 @@ io.on("connection", function(socket) {
       socket.emit("console message", map.getMap());
     } else if (msg == "getMyUserId") {
       socket.emit("console message", kingdom.getUserId());
+    } else if (msg == "getMyRessources") {
+      socket.emit("console message", JSON.stringify(kingdom.getRessources()));
     } else {
       console.log("message: " + msg);
       socket.emit("console message", msg);

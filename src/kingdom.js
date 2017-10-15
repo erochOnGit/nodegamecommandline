@@ -9,11 +9,15 @@ class Kingdom {
 
     this.Owner = owner;
     this.zones = { 0: startingZone };
-    this.startingRessources = startingRessources;
+    this.Ressources = startingRessources;
   }
 
   getUserId() {
     return this.Owner;
+  }
+
+  getRessources() {
+    return this.Ressources;
   }
 }
 export default Kingdom;
