@@ -1,12 +1,19 @@
 import Map from "./src/map";
 import Kingdom from "./src/kingdom.js";
-
+let admin = require("firebase-admin");
 let express = require("express");
 let app = require("express")();
 let http = require("http").Server(app);
 let io = require("socket.io")(http);
 let KingdomsUsersId = 0;
 let map = new Map();
+
+let serviceAccount = require(__dirname + "/kingdom-50680-firebase-adminsdk-l1gn3-442f8ded54.json");
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://kingdom-50680.firebaseio.com"
+});
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/static/view/index.html");
@@ -38,6 +45,7 @@ io.on("connection", function(socket) {
     }
   });
 });
+
 http.listen(3000, function() {
   console.log("listening on *:3000");
 });
