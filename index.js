@@ -18,7 +18,7 @@ admin.initializeApp({
 });
 
 app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/static/view/connection.html");
+  res.sendFile(__dirname + "/static/view/index.html");
   app.use(express.static(__dirname + "/static"));
 });
 
