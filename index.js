@@ -7,18 +7,9 @@ let http = require("http").Server(app);
 let io = require("socket.io")(http);
 let KingdomsUsersId = 0;
 let map = new Map();
-var admin = require("firebase-admin");
-
-var serviceAccount = require(__dirname +
-  "/kingdom-50680-firebase-adminsdk-l1gn3-dd2d7d74bc.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://kingdom-50680.firebaseio.com"
-});
 
 app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/static/view/index.html");
+  res.sendFile(__dirname + "/static/view/connection.html");
   app.use(express.static(__dirname + "/static"));
 });
 
