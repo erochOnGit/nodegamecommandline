@@ -40,3 +40,18 @@ form button {
 #messages li:nth-child(odd) {
   background: #eee;
 }
+a.auth.abcRioButton.abcRioButtonBlue {
+  position: absolute;
+  top: 39px;
+  right: 0px;
+  font-size: 20px;
+  margin: 0;
+  text-decoration: none;
+}
+
+#my-signin2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
