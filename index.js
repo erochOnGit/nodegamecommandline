@@ -14,13 +14,24 @@ app.get("/", function(req, res) {
 });
 
 io.on("connection", function(socket) {
-  KingdomsUsersId++;
+  console.log("connection");
+  socket.on("connectionUser", function(profile) {
+    console.log("profile" + profile);
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log("Full Name: " + profile.getName());
+    console.log("Given Name: " + profile.getGivenName());
+    console.log("Family Name: " + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+    KingdomsUsersId++;
+    console.log(KingdomsUsersId);
 
-  let kingdom = new Kingdom(socket, map, KingdomsUsersId, KingdomsUsersId, {
-    food: 10,
-    wood: 10,
-    stone: 5,
-    men: 1
+    let kingdom = new Kingdom(socket, map, KingdomsUsersId, KingdomsUsersId, {
+      food: 10,
+      wood: 10,
+      stone: 5,
+      men: 1
+    });
   });
 
   socket.on("console message", function(msg) {
@@ -38,6 +49,7 @@ io.on("connection", function(socket) {
     }
   });
 });
+
 http.listen(3000, function() {
   console.log("listening on *:3000");
 });

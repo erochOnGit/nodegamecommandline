@@ -36,6 +36,19 @@
     }
 </script>
 <script>
+    function  initSocket(profile) {
+        var socket = io("http://localhost:3000");
+        socket.emit('connectionUser',profile) ;
+        $('form').submit(function(){
+            socket.emit('console message', $('#m').val());
+            $('#m').val('');
+            return false;
+        });
+        socket.on('console message', function(msg){
+            $('#messages').append($('<li>').append(msg));
+        });
+    }
+
     function onSuccess(googleUser) {
         console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
         var profile = googleUser.getBasicProfile();
@@ -49,18 +62,7 @@
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
-        initSocket();
-    }
-    function  initSocket() {
-        var socket = io("http://localhost:3000");
-        $('form').submit(function(){
-            socket.emit('console message', $('#m').val());
-            $('#m').val('');
-            return false;
-        });
-        socket.on('console message', function(msg){
-            $('#messages').append($('<li>').append(msg));
-        });
+        initSocket(profile);
     }
     function onFailure(error) {
         console.log(error);
