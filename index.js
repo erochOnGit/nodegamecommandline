@@ -5,7 +5,7 @@ let express = require("express");
 let app = require("express")();
 let http = require("http").Server(app);
 let io = require("socket.io")(http);
-let KingdomsUsersId = 0;
+let KingdomsUsersId;
 let map = new Map();
 
 app.get("/", function(req, res) {
@@ -29,7 +29,7 @@ io.on("connection", function(socket) {
     } else if (msg == "getMyUserId") {
       socket.emit("console message", kingdom.getUserId());
     } else if (msg == "getMyRessources") {
-        socket.emit("console message", JSON.stringify(kingdom.getRessources()));
+      socket.emit("console message", JSON.stringify(kingdom.getRessources()));
     } else if (msg == "getMyZones") {
       socket.emit("console message", JSON.stringify(kingdom.getZones()));
     } else {
