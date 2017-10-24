@@ -5,11 +5,11 @@ let express = require("express");
 let app = require("express")();
 let http = require("http").Server(app);
 let io = require("socket.io")(http);
-let KingdomsUsersId = 0;
+let KingdomsUsersId;
 let map = new Map();
 
 app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/static/view/connection.html");
+  res.sendFile(__dirname + "/static/view/index.html");
   app.use(express.static(__dirname + "/static"));
 });
 
