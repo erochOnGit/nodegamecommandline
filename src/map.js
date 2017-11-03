@@ -9,13 +9,7 @@ import ressources from "./map.json";
 class Map {
   constructor() {
     console.log("user connected map generation started");
-    // this.villages = [];
-    // let village1;
-    // let village2;
-    // let village3;
-    // this.villages.push((village1 = new Village("name")));
-    // this.villages.push((village2 = new Village("name")));
-    // this.villages.push((village3 = new Village("name")));
+
     this.tabVillage = [];
     villages.map(village => {
       this.tabVillage.push(new Village(village.name));
@@ -26,19 +20,6 @@ class Map {
       this.tabRessources.push(new RessourseZone(ressource.character));
     });
 
-    // let champ1 = new RessourseZone("&#9638");
-    // let champ2 = new RessourseZone("&#9638");
-    // let champ3 = new RessourseZone("&#9638");
-    // let champ4 = new RessourseZone("&#9638");
-    // let champ5 = new RessourseZone("&#9638");
-    // let montagne1 = new RessourseZone("&#9641");
-    // let montagne2 = new RessourseZone("&#9641");
-    // let montagne3 = new RessourseZone("&#9641");
-    // let lac1 = new RessourseZone("&#9634");
-    // let lac2 = new RessourseZone("&#9634");
-    // let lac3 = new RessourseZone("&#9634");
-    // let betail1 = new RessourseZone("&#9635");
-    // let betail2 = new RessourseZone("&#9635");
     this.heigth = 4;
     this.width = 4;
     this.length = 15;
