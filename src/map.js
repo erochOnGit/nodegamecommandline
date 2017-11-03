@@ -10,9 +10,9 @@ class Map {
     let village1;
     let village2;
     let village3;
-    this.villages.push((village1 = new Village()));
-    this.villages.push((village2 = new Village()));
-    this.villages.push((village3 = new Village()));
+    this.villages.push((village1 = new Village("name")));
+    this.villages.push((village2 = new Village("name")));
+    this.villages.push((village3 = new Village("name")));
     let champ1 = new RessourseZone("&#9638");
     let champ2 = new RessourseZone("&#9638");
     let champ3 = new RessourseZone("&#9638");
@@ -30,28 +30,50 @@ class Map {
     this.heigth = 4;
     this.width = 4;
     this.length = 15;
+    this.json = [
+      montagne1,
+      village1,
+      champ1,
+      lac1,
+      betail1,
+      champ2,
+      champ3,
+      betail2,
+      village2,
+      lac2,
+      montagne2,
+      village3,
+      champ4,
+      montagne3,
+      lac3,
+      champ5
+    ];
+    let jsonIndex = 0;
+    this.json.forEach(function(ressource) {
+      ressource.setId(jsonIndex);
+      jsonIndex++;
+    });
 
-    this.json = {
-      0: montagne1,
-      1: village1,
-      2: champ1,
-      3: lac1,
-      4: betail1,
-      5: champ2,
-      6: champ3,
-      7: betail2,
-      8: village2,
-      9: lac2,
-      10: montagne2,
-      11: village3,
-      12: champ4,
-      13: montagne3,
-      14: lac3,
-      15: champ5
-    };
+    let j = 0;
+    let k = 1;
+    console.log("generating map");
+    for (let i = 0; i <= this.length; i++) {
+      // json[i].setCoordinate(i/k,j)
+      if (j == 0 && i < this.width) {
+        console.log("index " + i, j);
+        this.json[i].setCoordinate(i, j);
+      } else if (i % this.width == 0) {
+        j++;
+        console.log("index " + (i - this.width * j + " " + j));
+        this.json[i].setCoordinate(i - this.width * j, j);
+      } else {
+        console.log("index " + (i - this.width * j), j);
+        this.json[i].setCoordinate(i - this.width * j, j);
+      }
+    }
   }
 
-  getMap() {
+  displayMap() {
     let mapDom = "<div>";
     for (let i = 0; i <= this.length; i++) {
       if (i == 0) {
@@ -59,7 +81,6 @@ class Map {
       } else if (i % this.width == 0) {
         mapDom = mapDom + "</div><br><div>";
       }
-      console.log(i);
       mapDom = mapDom + "<span>" + this.json[i].character + "&#32&#32</span>";
     }
     mapDom = mapDom + "</div>";
