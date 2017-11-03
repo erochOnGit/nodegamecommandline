@@ -56,17 +56,19 @@ class Map {
 
     let j = 0;
     let k = 1;
+    console.log("generating map");
     for (let i = 0; i <= this.length; i++) {
       // json[i].setCoordinate(i/k,j)
       if (j == 0 && i < this.width) {
-        console.log("ikj " + i, j);
+        console.log("index " + i, j);
         this.json[i].setCoordinate(i, j);
       } else if (i % this.width == 0) {
         j++;
-        console.log("in" + (i - this.width * j + " " + j));
-        this.json[i].setCoordinate(i, j);
+        console.log("index " + (i - this.width * j + " " + j));
+        this.json[i].setCoordinate(i - this.width * j, j);
       } else {
-        console.log("ikj " + (i - this.width * j), j);
+        console.log("index " + (i - this.width * j), j);
+        this.json[i].setCoordinate(i - this.width * j, j);
       }
     }
   }

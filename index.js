@@ -70,7 +70,8 @@ io.on("connection", function(socket) {
               user.ressources
             );
           } else {
-            kingdom = new Kingdom(socket, map, userid, 2, {
+            //TODO : startingzone dynamic with 2tab village one already owned and one free to be get
+            kingdom = new Kingdom(socket, map, userid, 0, {
               food: 10,
               wood: 10,
               stone: 5,

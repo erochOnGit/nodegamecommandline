@@ -14,6 +14,8 @@ class Village {
   }
   getView() {
     return (
+      this.getId() +
+      "<br>" +
       "citizen : " +
       this.citizen +
       "<br>" +
@@ -46,6 +48,9 @@ class Village {
   }
   setId(id) {
     this.id = id;
+  }
+  getId() {
+    return this.id;
   }
 }
 export default Village;
