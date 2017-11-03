@@ -1,13 +1,16 @@
 [
   {
+    "id":1,
     "type": "village",
     "argument": "name"
   },
   {
+    "id":2,
     "type": "village",
     "argument": "name"
   },
   {
+    "id":3,
     "type": "village",
     "argument": "name"
   }

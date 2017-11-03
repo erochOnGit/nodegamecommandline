@@ -4,6 +4,7 @@
 class RessourceZone {
   constructor(character = "&#x26C6") {
     this.character = character;
+    this.type;
     this.id;
     this.x;
     this.y;
