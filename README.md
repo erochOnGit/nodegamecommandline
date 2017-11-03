@@ -8,4 +8,5 @@
 	getMap
 	getMyUserId
 	getMyRessources
+	getMyZones
 ### c tout ... pour le moment ###
