@@ -1,16 +1,19 @@
 class Kingdom {
   constructor(
     socket,
-    map,
+    worldMap,
     owner = 1,
     startingZone = 1,
-    startingRessources = { food: 10, wood: 10, stone: 5, men: 1 }
+    ressources = { food: 10, wood: 10, stone: 5, men: 1 },
+    zonesInvaded = []
   ) {
     socket.emit("console message", "User connected <br>Map generation started");
-
+    this.id;
     this.Owner = owner;
-    this.zones = { 0: map.getStartingVillage(startingZone) };
-    this.Ressources = startingRessources;
+    this.zones = [];
+    this.zones.push(worldMap.getStartingVillage(startingZone));
+    this.Ressources = ressources;
+    //for zonesInvaded zones.push zone
   }
 
   getUserId() {
@@ -22,7 +25,8 @@ class Kingdom {
   }
 
   getZones() {
-        return this.zones[0].name;
+    console.log(JSON.stringify(this.zones));
+    return this.zones[0].getView() + "<br>";
   }
 }
 export default Kingdom;

@@ -12,7 +12,20 @@ let auth = new GoogleAuth();
 let clientId =
   "464871564601-ie5d2lejdvia089pfgcghh6eujunojg0.apps.googleusercontent.com";
 let client = new auth.OAuth2(clientId, "", "");
-let users = [{ id: "113232695409700449706", pseudo: "sheep" }];
+let users = [
+  {
+    id: "113232695409700449706",
+    pseudo: "sheep",
+    startingZone: 1,
+    ressources: {
+      food: 25,
+      wood: 35,
+      stone: 6,
+      men: 5
+    },
+    zonesInvaded: [{ id: 3, citizen: 3 }]
+  }
+];
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/static/view/index.html");
@@ -38,23 +51,26 @@ io.on("connection", function(socket) {
           console.log("payload : " + JSON.stringify(payload));
           var userid = payload["sub"];
           if (
-            users.reduce((accu,user) => {
-              console.log("user.id : " + user.id);
-              console.log("userid : " + userid);
-              console.log("user.id == userid : " + (user.id == userid));
+            users.reduce((accu, user) => {
               if (user.id == userid || accu) {
                 return true;
               }
-            },false)
+            }, false)
           ) {
-            kingdom = new Kingdom(socket, map, userid, 3, {
-              food: 25,
-              wood: 35,
-              stone: 6,
-              men: 5
-            });
+            let user = users.reduce((accu, user) => {
+              if (user.id == userid || accu) {
+                return user;
+              }
+            }, false);
+            kingdom = new Kingdom(
+              socket,
+              map,
+              userid,
+              user.startingZone,
+              user.ressources
+            );
           } else {
-            kingdom = new Kingdom(socket, map, 6, 6, {
+            kingdom = new Kingdom(socket, map, userid, 2, {
               food: 10,
               wood: 10,
               stone: 5,
@@ -70,12 +86,12 @@ io.on("connection", function(socket) {
 
   socket.on("console message", function(msg) {
     if (msg == "getMap") {
-      socket.emit("console message", map.getMap());
+      socket.emit("console message", map.displayMap());
     } else if (msg == "getMyUserId" || msg == "getId") {
       socket.emit("console message", kingdom.getUserId());
     } else if (msg == "getMyRessources") {
       socket.emit("console message", JSON.stringify(kingdom.getRessources()));
-    } else if (msg == "getMyZones") {
+    } else if (msg == "getMyZones" || msg == "getZ") {
       socket.emit("console message", JSON.stringify(kingdom.getZones()));
     } else {
       console.log("message: " + msg);
